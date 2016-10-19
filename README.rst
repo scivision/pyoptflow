@@ -39,3 +39,7 @@ Comparision with Matlab Computer Vision toolbox
 ===============================================
 Also added similar method in Octave and a comparison plot using Matlab Computer Vision toolbox
 
+
+Reference
+=========
+`Inspired by <https://github.com/ablarry91/Optical-Flow-LucasKanade-HornSchunck/>`_
