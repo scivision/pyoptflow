@@ -1,3 +1,6 @@
+.. image:: https://zenodo.org/badge/71314875.svg
+   :target: https://zenodo.org/badge/latestdoi/71314875
+
 =====================================
 Optical Flow: LucasKanade HornSchunck
 =====================================
