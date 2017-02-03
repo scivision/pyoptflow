@@ -1,8 +1,5 @@
 #!/usr/bin/env python
-from . import Path
-import six
-if six.PY2:
-    FileNotFoundError = OSError
+from pathlib import Path
 
 def getimgfiles(stem):
     stem = Path(stem).expanduser()
@@ -10,15 +7,15 @@ def getimgfiles(stem):
     name = stem.name
     exts = ['.ppm','.bmp','.png','.jpg']
     for ext in exts:
-        pat = name+'.*'+ext
-        print('searching {}/{}'.format(path,pat))
+        pat = f'{name}.*{ext}'
+        print(f'searching {path}/{pat}')
         flist = sorted(path.glob(pat))
         if flist:
             break
 
     if not flist:
-        raise FileNotFoundError('no files found under {} with {}'.format(stem,exts))
+        raise FileNotFoundError(f'no files found under {stem} with {exts}')
 
-    print('analyzing {} files {}.*{}'.format(len(flist),stem,ext))
+    print(f'analyzing {len(flist)} files {stem}.*{ext}')
 
     return flist,ext

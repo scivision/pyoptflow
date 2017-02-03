@@ -19,11 +19,11 @@ def demo(stem):
     flist,ext = getimgfiles(stem)
 
     for i in range(len(flist)-1):
-        fn1 = '{}.{}{}'.format(stem,i,ext)
+        fn1 = f'{stem}.{i}{ext}'
         im1 = imread(fn1,flatten=True).astype(float)  #flatten=True is rgb2gray
  #       Iold = gaussian_filter(Iold,FILTER)
 
-        fn2 = '{}.{}{}'.format(stem,i+1,ext)
+        fn2 = f'{stem}.{i+1}{ext}'
         im2 = imread(fn2,flatten=True).astype(float)
 #        Inew = gaussian_filter(Inew,FILTER)
 

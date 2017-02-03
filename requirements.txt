@@ -1,6 +1,5 @@
 setuptools
 nose
-six
 scipy
 numpy
 matplotlib

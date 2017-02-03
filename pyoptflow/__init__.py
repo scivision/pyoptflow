@@ -1,10 +1,4 @@
 from __future__ import division
-try:
-    from pathlib import Path
-    Path().expanduser()
-except (ImportError,AttributeError):
-    from pathlib2 import Path
-#
 import numpy as np
 from scipy.ndimage.filters import convolve as filter2
 #

@@ -15,7 +15,7 @@ from pyoptflow.plots import compareGraphsLK
 def demo(stem, kernel=5,Nfilter=7):
     flist,ext = getimgfiles(stem)
 #%% priming read
-    im1 = imread(stem + '.0' + ext, flatten=True)
+    im1 = imread(f'{stem}.0{ext}', flatten=True)
     Y,X = im1.shape
 #%% evaluate the first frame's POI
     POI = getPOI(X,Y,kernel)
@@ -23,7 +23,7 @@ def demo(stem, kernel=5,Nfilter=7):
     W = gaussianWeight(kernel)
 #%% loop over all images in directory
     for i in range(1,len(flist)):
-        im2 = imread(stem + '.' + str(i) + ext, flatten=True)
+        im2 = imread(f'{stem}.{i}{ext}', flatten=True)
         im2 = gaussian_filter(im2, Nfilter)
 
         V = LucasKanade(im1, im2, POI, W, kernel)
