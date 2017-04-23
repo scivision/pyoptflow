@@ -1,7 +1,16 @@
 #!/usr/bin/env python
+req = ['nose','pillow','scipy','numpy','matplotlib']
+# %%
+try:
+    import conda.cli
+    conda.cli.main('install',*req)
+except Exception as e:
+    import pip
+    pip.main(['install',*req])
+# %%
 from setuptools import setup
 
-req = ['nose','pillow','scipy','numpy','matplotlib']
+
 
 setup(name='pyoptflow',
       packages=['pyoptflow'],
@@ -14,5 +23,4 @@ setup(name='pyoptflow',
       'Programming Language :: Python :: 3.6',
       ],
       description='Pure Python optical flow: Horn-Schunck, Lucas-Kanade',
-      install_requires=req,
 	  )
