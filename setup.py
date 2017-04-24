@@ -19,7 +19,6 @@ setup(name='pyoptflow',
       'Topic :: Scientific/Engineering :: Image Analysis',
       'Development Status :: 3 - Alpha',
       'Programming Language :: Python :: 3',
-      'Programming Language :: Python',
       ],
       description='Pure Python optical flow: Horn-Schunck, Lucas-Kanade',
 	  )
