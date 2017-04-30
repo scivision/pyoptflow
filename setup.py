@@ -16,7 +16,7 @@ setup(name='pyoptflow',
       url='https://github.com/scivision/pyoptflow',
       version='1.0.0',
       classifiers=[
-      'Topic :: Scientific/Engineering :: Image Analysis',
+      'Topic :: Scientific/Engineering',
       'Development Status :: 3 - Alpha',
       'Programming Language :: Python :: 3',
       ],
