@@ -1,9 +1,9 @@
 .. image:: https://zenodo.org/badge/71314875.svg
    :target: https://zenodo.org/badge/latestdoi/71314875
 .. image:: https://travis-ci.org/scivision/pyoptflow.svg?branch=master
-    :target: https://travis-ci.org/scivision/pyoptflow
+   :target: https://travis-ci.org/scivision/pyoptflow
 .. image:: https://coveralls.io/repos/github/scivision/pyoptflow/badge.svg?branch=master
-:target: https://coveralls.io/github/scivision/pyoptflow?branch=master
+   :target: https://coveralls.io/github/scivision/pyoptflow?branch=master
 
 
 
