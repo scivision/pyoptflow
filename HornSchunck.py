@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: future_fstrings -*-
 """
 ./HornSchunck.py data/box/box
 ./HornSchunck.py data/office/office
@@ -16,7 +17,8 @@ from pyoptflow.plots import compareGraphs
 FILTER = 7
 
 def demo(stem):
-    flist,ext = getimgfiles(stem)
+    flist = getimgfiles(stem)
+    ext = flist[0].suffix
 
     for i in range(len(flist)-1):
         fn1 = f'{stem}.{i}{ext}'

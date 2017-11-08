@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: future_fstrings -*-
 """
 ./LucasKanade.py data/box/box
 ./LucasKanade.py data/office/office
@@ -13,7 +14,8 @@ from pyoptflow.io import getimgfiles
 from pyoptflow.plots import compareGraphsLK
 
 def demo(stem, kernel=5,Nfilter=7):
-    flist,ext = getimgfiles(stem)
+    flist = getimgfiles(stem)
+    ext = flist[0].suffix
 #%% priming read
     im1 = imread(f'{stem}.0{ext}', flatten=True)
     Y,X = im1.shape

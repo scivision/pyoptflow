@@ -31,8 +31,8 @@ def test_lucaskanade():
     print(V)
 
 def test_io():
-    im1 = pio.getimgfiles(RDIR/'data/box/box')
-    print()
+    flist = pio.getimgfiles(RDIR/'data/box/box')
+    print(flist)
 
 
 

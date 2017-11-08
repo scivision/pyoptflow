@@ -1,3 +1,4 @@
+# -*- coding: future_fstrings -*-
 from pathlib import Path
 
 def getimgfiles(stem):
@@ -7,7 +8,7 @@ def getimgfiles(stem):
     exts = ['.ppm','.bmp','.png','.jpg']
     for ext in exts:
         pat = f'{name}.*{ext}'
-        print(f'searching {path}/{pat}')
+        print(f'searching {path/pat}')
         flist = sorted(path.glob(pat))
         if flist:
             break
@@ -17,4 +18,4 @@ def getimgfiles(stem):
 
     print(f'analyzing {len(flist)} files {stem}.*{ext}')
 
-    return flist,ext
+    return flist
