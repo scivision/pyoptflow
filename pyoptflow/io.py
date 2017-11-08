@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from pathlib import Path
 
 def getimgfiles(stem):

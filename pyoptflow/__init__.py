@@ -1,4 +1,3 @@
-from __future__ import division
 import numpy as np
 from scipy.ndimage.filters import convolve as filter2
 #

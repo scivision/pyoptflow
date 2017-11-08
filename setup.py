@@ -1,10 +1,11 @@
 #!/usr/bin/env python
-req = ['nose','pillow','scipy','numpy','matplotlib','pathlib2']
+req = ['nose','setuptools','pillow','scipy','numpy']
+ereq = ['matplotlib']
 # %%
 try:
     import conda.cli
     conda.cli.main('install',*req)
-except Exception as e:
+except Exception:
     import pip
     pip.main(['install'] + req)
 # %%
@@ -20,5 +21,7 @@ setup(name='pyoptflow',
       'Development Status :: 3 - Alpha',
       'Programming Language :: Python :: 3',
       ],
+      install_requires=req,
+      extras_require={'plot':ereq},
       description='Pure Python optical flow: Horn-Schunck, Lucas-Kanade',
 	  )
