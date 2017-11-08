@@ -1,5 +1,5 @@
-.. image:: https://zenodo.org/badge/71314875.svg
-   :target: https://zenodo.org/badge/latestdoi/71314875
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1043971.svg
+   :target: https://doi.org/10.5281/zenodo.1043971
    
 .. image:: https://travis-ci.org/scivision/pyoptflow.svg?branch=master
    :target: https://travis-ci.org/scivision/pyoptflow
