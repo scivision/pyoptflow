@@ -33,7 +33,7 @@ before_install:
     - pip -q install coveralls
 
 install:
-    - python setup.py develop
+    - pip install -e .
 
 script: coverage run tests/test.py -v
 

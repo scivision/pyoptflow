@@ -20,9 +20,14 @@ Python implementation of optical flow estimation using only the Scipy stack for:
 * Lucas Kanade method
 * Horn Schunck
 
-Requires Python >= 3.5 (recommended Python >= 3.6)
 
 .. contents::
+
+Install
+=======
+Requires Python >= 3.5::
+
+    pip install -e .
 
 Examples
 ========
