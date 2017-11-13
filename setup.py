@@ -1,13 +1,7 @@
 #!/usr/bin/env python
-req = ['nose','setuptools','pillow','scipy','numpy']
-pipreq = ['future-fstrings']
-ereq = ['matplotlib']
-# %%
-try:
-    import conda.cli
-    conda.cli.main('install',*req)
-except Exception:
-    pass
+req = ['nose','setuptools','pillow','scipy','numpy',
+       'future-fstrings']
+preq = ['matplotlib']
 # %%
 from setuptools import setup
 
@@ -22,7 +16,7 @@ setup(name='pyoptflow',
       'Programming Language :: Python :: 3',
       ],
       python_requires = '>=3.5',
-      install_requires = req + pipreq,
-      extras_require={'plot':ereq},
+      install_requires = req,
+      extras_require={'plot':preq},
       description='Pure Python optical flow: Horn-Schunck, Lucas-Kanade',
 	  )
