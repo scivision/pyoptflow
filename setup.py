@@ -3,10 +3,10 @@ req = ['nose','setuptools','pillow','scipy','numpy',
        'future-fstrings']
 preq = ['matplotlib']
 # %%
-from setuptools import setup
+from setuptools import setup,find_packages
 
 setup(name='pyoptflow',
-      packages=['pyoptflow'],
+      packages=find_packages(),
       author='Michael Hirsch, Ph.D.',
       url='https://github.com/scivision/pyoptflow',
       version='1.1.0',
