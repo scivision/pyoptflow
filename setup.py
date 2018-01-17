@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-req = ['nose','setuptools','pillow','scipy','numpy',
+install_requires = ['pillow','scipy','numpy',
        'future-fstrings']
-preq = ['matplotlib']
+tests_require = ['nose','coveralls']
 # %%
 from setuptools import setup,find_packages
 
@@ -16,7 +16,9 @@ setup(name='pyoptflow',
       'Programming Language :: Python :: 3',
       ],
       python_requires = '>=3.5',
-      install_requires = req,
-      extras_require={'plot':preq},
+      install_requires = install_requires,
+      tests_require = tests_require,
+      extras_require={'plot':['matplotlib'],
+                      'tests':tests_require},
       description='Pure Python optical flow: Horn-Schunck, Lucas-Kanade',
 	  )
