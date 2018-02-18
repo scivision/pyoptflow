@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-install_requires = ['imageio','scipy','numpy''scikit-image']
+install_requires = ['imageio','scipy','numpy','scikit-image']
 tests_require = ['nose','coveralls']
 # %%
 from setuptools import setup,find_packages
