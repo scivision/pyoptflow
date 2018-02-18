@@ -1,4 +1,3 @@
-# -*- coding: future_fstrings -*-
 from pathlib import Path
 
 def getimgfiles(stem):

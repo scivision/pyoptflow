@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.ndimage.filters import convolve as filter2
 #
+from .io import getimgfiles
 from .plots import plotderiv
 
 HSKERN =np.array([[1/12, 1/6, 1/12],

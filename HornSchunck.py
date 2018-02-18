@@ -1,17 +1,16 @@
 #!/usr/bin/env python
-# -*- coding: future_fstrings -*-
 """
 ./HornSchunck.py data/box/box
 ./HornSchunck.py data/office/office
 ./HornSchunck.py data/rubic/rubic
 ./HornSchunck.py data/sphere/sphere
 """
+from skimage.color import rgb2grey
 from scipy.ndimage.filters import gaussian_filter
-from scipy.ndimage import imread
+import imageio
 from matplotlib.pyplot import show
 #
-from pyoptflow import HornSchunck
-from pyoptflow.io import getimgfiles
+from pyoptflow import HornSchunck, getimgfiles
 from pyoptflow.plots import compareGraphs
 
 FILTER = 7
@@ -22,11 +21,15 @@ def demo(stem):
 
     for i in range(len(flist)-1):
         fn1 = f'{stem}.{i}{ext}'
-        im1 = imread(fn1,flatten=True).astype(float)  #flatten=True is rgb2gray
+        im1 = imageio.imread(fn1)
+        if im1.ndim>2:
+            im1 = rgb2grey(im1)
  #       Iold = gaussian_filter(Iold,FILTER)
 
         fn2 = f'{stem}.{i+1}{ext}'
-        im2 = imread(fn2,flatten=True).astype(float)
+        im2 = imageio.imread(fn2)
+        if im2.ndim>2:
+            im2 = rgb2grey(im2)
 #        Inew = gaussian_filter(Inew,FILTER)
 
         U,V = HornSchunck(im1, im2, 1., 100)
