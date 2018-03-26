@@ -1,121 +1,24 @@
 import numpy as np
-from scipy.ndimage.filters import convolve as filter2
+from pathlib import Path
 #
-from .io import getimgfiles
-from .plots import plotderiv
-
-HSKERN =np.array([[1/12, 1/6, 1/12],
-                  [1/6,    0, 1/6],
-                  [1/12, 1/6, 1/12]],float)
-
-kernelX = np.array([[-1, 1],
-                     [-1, 1]]) * .25 #kernel for computing d/dx
-kernelY = np.array([[-1,-1],
-                     [ 1, 1]]) * .25 #kernel for computing d/dy
-kernelT = np.ones((2,2))*.25
-
-def HornSchunck(im1, im2, alpha=0.001, Niter=8, verbose=False):
-    """
-    im1: image at t=0
-    im2: image at t=1
-    alpha: regularization constant
-    Niter: number of iteration
-    """
-    im1 = im1.astype(np.float32)
-    im2 = im2.astype(np.float32)
-
-	#set up initial velocities
-    uInitial = np.zeros([im1.shape[0],im1.shape[1]])
-    vInitial = np.zeros([im1.shape[0],im1.shape[1]])
-
-	# Set initial value for the flow vectors
-    U = uInitial
-    V = vInitial
-
-	# Estimate derivatives
-    [fx, fy, ft] = computeDerivatives(im1, im2)
-
-    if verbose:
-        plotderiv(fx,fy,ft)
-
-#    print(fx[100,100],fy[100,100],ft[100,100])
-
-	# Iteration to reduce error
-    for _ in range(Niter):
-#%% Compute local averages of the flow vectors
-        uAvg = filter2(U, HSKERN)
-        vAvg = filter2(V, HSKERN)
-#%% common part of update step
-        der = (fx*uAvg + fy*vAvg + ft) / (alpha**2 + fx**2 + fy**2)
-#%% iterative step
-        U = uAvg - fx * der
-        V = vAvg - fy * der
-
-    return U,V
-
-def computeDerivatives(im1, im2):
-
-    fx = filter2(im1,kernelX) + filter2(im2,kernelX)
-    fy = filter2(im1,kernelY) + filter2(im2,kernelY)
-
-   # ft = im2 - im1
-    ft = filter2(im1,kernelT) + filter2(im2,-kernelT)
-
-    return fx,fy,ft
-
+from .hornschunck import HornSchunck # noqa: F401
+from .lucaskanade import LucasKanade, getPOI # noqa: F401
 #%%
-def LucasKanade(im1,im2,POI,W, kernel):
-#%% evaluate every POI
-    V = np.zeros([(POI.shape)[0],2])
-    for i in range(len(POI)):
-        A = buildA(im2,      POI[i][0][1], POI[i][0][0], kernel)
-        B = buildB(im2, im1, POI[i][0][1], POI[i][0][0], kernel)
-#%% solve for v
-        Vpt = np.linalg.inv(A.T @ W**2 @ A) @ A.T @ W**2 @ B
-        V[i,0] = Vpt[0]
-        V[i,1] = Vpt[1]
 
-    return V
+def getimgfiles(stem:Path, pat:str) -> list:
 
-def buildA(img, centerX, centerY, kernelSize):
-	#build a kernel containing pixel intensities
-    mean = kernelSize//2
-    count = 0
-    home = img[centerY, centerX] #storing the intensity of the center pixel
-    A = np.zeros([kernelSize**2, 2])
-    for j in range(-mean,mean+1): #advance the y
-        for i in range(-mean,mean+1): #advance the x
-            if i == 0:
-                Ax = 0
-            else:
-                Ax = (home - img[centerY+j, centerX+i])/i
-            if j == 0:
-                Ay = 0
-            else:
-                Ay = (home - img[centerY+j, centerX+i])/j
-            #write to A
-            A[count] = np.array([Ay, Ax])
-            count += 1
-    # print np.linalg.norm(A)
+    stem = Path(stem).expanduser()
 
-    return A
+    print('searching', stem/pat)
+    flist = sorted(stem.glob(pat))
 
-def buildB(imgNew, imgOld, centerX, centerY, kernelSize):
-	mean = kernelSize//2
-	count = 0
-	home = imgNew[centerY, centerX]
+    if not flist:
+        raise FileNotFoundError(f'no files found under {stem} using {pat}')
 
-	B = np.zeros([kernelSize**2])
-	for j in range(-mean,mean+1):
-		for i in range(-mean,mean+1):
-			Bt = imgNew[centerY+j,centerX+i] - imgOld[centerY+j,centerX+i]
-			B[count] = Bt
-			count += 1
-		# print np.linalg.norm(B)
+    return flist
 
-	return B
 
-def gaussianWeight(kernelSize, even=False):
+def gaussianWeight(kernelSize:int, even:bool=False) -> np.ndarray:
     if even == True:
         weight = np.ones([kernelSize,kernelSize])
         weight = weight.reshape((1,kernelSize**2))
@@ -140,23 +43,3 @@ def gaussianWeight(kernelSize, even=False):
     return weight
 	# return np.diag(weight)
 
-def getPOI(xSize, ySize, kernelSize):
-    mean = kernelSize // 2
-    xPos = mean
-    yPos = mean
-    xStep = (xSize-mean) // kernelSize
-    yStep = (ySize-mean) // kernelSize
-    length = xStep*yStep
-
-    poi = np.zeros((length,1,2),int)
-    count = 0
-    for i in range(yStep):
-        for j in range(xStep):
-            poi[count,0,1] = xPos
-            poi[count,0,0] = yPos
-            xPos += kernelSize
-            count += 1
-        xPos = mean
-        yPos += kernelSize
-
-    return poi

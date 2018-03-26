@@ -51,29 +51,37 @@ optionally, to run self-tests::
 Examples
 ========
 
+The program scripts expect <directory> <glob pattern>
+It uses [imageio](https://imageio.github.io/) to load a very wide varity of images *and* video.
+
 Box
 ---
 ::
 
-  python HornSchunck.py data/box/box
+  python HornSchunck.py data/box box*.bmp
+
 
 Office
 ------
-::
+all time steps::
 
-  python HornSchunck.py data/office/office
+  python HornSchunck.py data/office office*.bmp
+  
+or just the first 2 time steps::
+
+  python HornSchunck.py data/office office.[0-2].bmp
 
 Rubic
 ------
 ::
 
-  python HornSchunck.py data/rubic/rubic
+  python HornSchunck.py data/rubic rubic*.bmp
 
 Sphere
 ------
 ::
 
-  python HornSchunck.py data/sphere/sphere
+  python HornSchunck.py data/sphere sphere*.bmp
 
 Comparision with Matlab Computer Vision toolbox
 ===============================================
