@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 install_requires = ['imageio','scipy','numpy','scikit-image']
-tests_require = ['nose','coveralls']
+tests_require = ['pytest','nose','coveralls']
 # %%
 from setuptools import setup,find_packages
 
@@ -8,11 +8,15 @@ setup(name='pyoptflow',
       packages=find_packages(),
       author='Michael Hirsch, Ph.D.',
       url='https://github.com/scivision/pyoptflow',
-      version='1.2.0',
+      version='1.2.1',
       classifiers=[
+      'Development Status :: 4 - Beta',
+      'Environment :: Console',
+      'Intended Audience :: Science/Research',
+      'Operating System :: OS Independent',
+      'Programming Language :: Python :: 3.6',
+      'Programming Language :: Python :: 3.7',
       'Topic :: Scientific/Engineering',
-      'Development Status :: 3 - Alpha',
-      'Programming Language :: Python :: 3',
       ],
       python_requires = '>=3.6',
       install_requires = install_requires,
@@ -21,4 +25,5 @@ setup(name='pyoptflow',
                       'tests':tests_require},
       description='Pure Python optical flow: Horn-Schunck, Lucas-Kanade',
       long_description=open('README.rst').read()
+      scripts=['HornSchunck.py','LucasKanade.py'],
 	  )
