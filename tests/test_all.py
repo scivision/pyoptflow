@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from pathlib import Path
 import numpy as np
-import unittest
 #
 import pyoptflow as pof
 
@@ -9,36 +8,23 @@ RDIR = Path(__file__).parents[1]
 
 FILTER = 7
 
-IM1 = np.array([[1,1,1],
-                [1,0,1],
-                [1,1,1]])
+IM1 = np.ones((16,16))
+IM2 = IM1.copy()
 
-IM2 = np.array([[1,1,1],
-                [1,1,1],
-                [1,1,1]])
+IM1[7,7] = 0
 
-class BasicTests(unittest.TestCase):
+def test_hornschunck():
+    U,V = pof.HornSchunck(IM1, IM2, 1., 100)
 
-    def test_hornschunck(self):
-        U,V = pof.HornSchunck(IM1, IM2, 1., 100)
+    np.testing.assert_allclose(U[7,7], -0.0594501756)
 
-        np.testing.assert_allclose(U[1,1],-0.07192193)
 
-    def test_lucaskanade(self):
-        k=5
-        POI = pof.getPOI(3,3,k)
-    #% get the weights
-        W = pof.gaussianWeight(k)
-        V = pof.LucasKanade(IM1, IM2, POI, W, k)
-        print(V)
 
-    def test_io(self):
-        flist = pof.getimgfiles(RDIR/'data/box/box')
-        print(flist)
+def test_io():
+    flist = pof.getimgfiles(RDIR/'data/box','box*')
+    print(flist)
 
 
 
 if __name__ == '__main__':
-#    test_hornschunck()
-#    test_lucaskanade()
-    unittest.main()
+    np.testing.run_module_suite()
