@@ -24,6 +24,6 @@ setup(name='pyoptflow',
       extras_require={'plot':['matplotlib'],
                       'tests':tests_require},
       description='Pure Python optical flow: Horn-Schunck, Lucas-Kanade',
-      long_description=open('README.rst').read()
+      long_description=open('README.rst').read(),
       scripts=['HornSchunck.py','LucasKanade.py'],
 	  )
