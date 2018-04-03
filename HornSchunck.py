@@ -5,7 +5,6 @@
 ./HornSchunck.py data/rubic/rubic
 ./HornSchunck.py data/sphere/sphere
 """
-from skimage.color import rgb2grey
 #from scipy.ndimage.filters import gaussian_filter
 import imageio
 from matplotlib.pyplot import show
@@ -20,15 +19,12 @@ def horn_schunck(stem, pat:str):
 
     for i in range(len(flist)-1):
         fn1 = flist[i]
-        im1 = imageio.imread(fn1)
-        if im1.ndim>2:
-            im1 = rgb2grey(im1)
+        im1 = imageio.imread(fn1, as_gray=True)
+
  #       Iold = gaussian_filter(Iold,FILTER)
 
         fn2 = flist[i+1]
-        im2 = imageio.imread(fn2)
-        if im2.ndim>2:
-            im2 = rgb2grey(im2)
+        im2 = imageio.imread(fn2, as_gray=True)
 #        Inew = gaussian_filter(Inew,FILTER)
 
         U,V = HornSchunck(im1, im2, 1., 100)
