@@ -23,6 +23,10 @@
    :alt: Maintainability
 
 
+.. image:: http://pepy.tech/badge/pyoptflow
+   :target: http://pepy.tech/project/pyoptflow
+   :alt: PyPi Download stats
+
 =====================================
 Optical Flow: Horn-Schunck
 =====================================
