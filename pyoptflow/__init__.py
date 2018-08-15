@@ -1,10 +1,11 @@
 from pathlib import Path
 #
-from .hornschunck import HornSchunck # noqa: F401
-from .lucaskanade import LucasKanade, getPOI, gaussianWeight # noqa: F401
-#%%
+from .hornschunck import HornSchunck  # noqa: F401
+from .lucaskanade import LucasKanade, getPOI, gaussianWeight  # noqa: F401
+# %%
 
-def getimgfiles(stem:Path, pat:str) -> list:
+
+def getimgfiles(stem: Path, pat: str) -> list:
 
     stem = Path(stem).expanduser()
 
@@ -15,5 +16,3 @@ def getimgfiles(stem:Path, pat:str) -> list:
         raise FileNotFoundError(f'no files found under {stem} using {pat}')
 
     return flist
-
-
