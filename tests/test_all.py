@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 from pathlib import Path
+import pytest
 import numpy as np
-#
+from pytest import approx
 import pyoptflow as pof
 
 RDIR = Path(__file__).parents[1]
@@ -17,7 +18,7 @@ IM1[7, 7] = 0
 def test_hornschunck():
     U, V = pof.HornSchunck(IM1, IM2, 1., 100)
 
-    np.testing.assert_allclose(U[7, 7], -0.0594501756)
+    assert U[7, 7] == approx(-0.0594501756)
 
 
 def test_io():
@@ -26,4 +27,4 @@ def test_io():
 
 
 if __name__ == '__main__':
-    np.testing.run_module_suite()
+    pytest.main(['-xrsv', __file__])
