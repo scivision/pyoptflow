@@ -21,8 +21,8 @@ def compareGraphs(u, v, Inew, scale: int=3, quivstep: int=5, fn: Path=None):
     ax = figure().gca()
     ax.imshow(Inew, cmap='gray', origin='lower')
     # plt.scatter(POI[:,0,1],POI[:,0,0])
-    for i in range(0, len(u), quivstep):
-        for j in range(0, len(v), quivstep):
+    for i in range(0, u.shape[0], quivstep):
+        for j in range(0, v.shape[1], quivstep):
             ax.arrow(j, i, v[i, j]*scale, u[i, j]*scale, color='red',
                      head_width=0.5, head_length=1)
 
