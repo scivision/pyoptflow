@@ -19,7 +19,7 @@ def main():
     lucas_kanade(p.stem, p.pat)
 
 
-def lucas_kanade(stem, pat: str, kernel: int=5, Nfilter: int=7):
+def lucas_kanade(stem, pat: str, kernel: int = 5, Nfilter: int = 7):
     flist = getimgfiles(stem, pat)
 
 # %% priming read

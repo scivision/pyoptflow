@@ -13,7 +13,7 @@ def plotderiv(fx, fy, ft):
         fg.colorbar(h, ax=a)
 
 
-def compareGraphs(u, v, Inew, scale: int=3, quivstep: int=5, fn: Path=None):
+def compareGraphs(u, v, Inew, scale: int = 3, quivstep: int = 5, fn: Path = None):
     """
     makes quiver
     """
@@ -34,7 +34,7 @@ def compareGraphs(u, v, Inew, scale: int=3, quivstep: int=5, fn: Path=None):
     pause(0.01)
 
 
-def compareGraphsLK(imgOld, imgNew, POI, V, scale=1., fn: Path=None):
+def compareGraphsLK(imgOld, imgNew, POI, V, scale=1., fn: Path = None):
 
     ax = gca()
     ax.imshow(imgNew, cmap='gray', origin='lower')

@@ -19,7 +19,7 @@ def LucasKanade(im1, im2, kernel, poi, W):
 
 
 def buildA(img, centerX, centerY, kernelSize):
-        # build a kernel containing pixel intensities
+    # build a kernel containing pixel intensities
     mean = kernelSize//2
     count = 0
     home = img[centerY, centerX]  # storing the intensity of the center pixel
@@ -79,7 +79,7 @@ def getPOI(xSize, ySize, kernelSize):
     return poi
 
 
-def gaussianWeight(kernelSize: int, even: bool=False) -> np.ndarray:
+def gaussianWeight(kernelSize: int, even: bool = False) -> np.ndarray:
     if even:
         weight = np.ones([kernelSize, kernelSize])
         weight = weight.reshape((1, kernelSize**2))
