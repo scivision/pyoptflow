@@ -15,13 +15,22 @@ kernelY = np.array([[-1, -1],
 kernelT = np.ones((2, 2))*.25
 
 
-def HornSchunck(im1: np.ndarray, im2: np.ndarray, alpha: float = 0.001, Niter: int = 8,
+def HornSchunck(im1: np.ndarray, im2: np.ndarray, *,
+                alpha: float = 0.001, Niter: int = 8,
                 verbose: bool = False) -> Tuple[np.ndarray, np.ndarray]:
     """
-    im1: image at t=0
-    im2: image at t=1
-    alpha: regularization constant
-    Niter: number of iteration
+
+    Parameters
+    ----------
+
+    im1: numpy.ndarray
+        image at t=0
+    im2: numpy.ndarray
+        image at t=1
+    alpha: float
+        regularization constant
+    Niter: int
+        number of iteration
     """
     im1 = im1.astype(np.float32)
     im2 = im2.astype(np.float32)

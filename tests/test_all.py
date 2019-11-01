@@ -16,15 +16,15 @@ IM1[7, 7] = 0
 
 
 def test_hornschunck():
-    U, V = pof.HornSchunck(IM1, IM2, 1., 100)
+    U, V = pof.HornSchunck(IM1, IM2, 1.0, 100)
 
     assert U[7, 7] == approx(-0.0594501756)
 
 
 def test_io():
-    flist = pof.getimgfiles(RDIR/'data/box', 'box*')
+    flist = pof.getimgfiles(RDIR / 'data/box', 'box*')
     print(flist)
 
 
 if __name__ == '__main__':
-    pytest.main(['-xrsv', __file__])
+    pytest.main([__file__])

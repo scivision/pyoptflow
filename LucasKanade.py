@@ -22,16 +22,16 @@ def main():
 def lucas_kanade(stem, pat: str, kernel: int = 5, Nfilter: int = 7):
     flist = getimgfiles(stem, pat)
 
-# %% priming read
+    # %% priming read
     im1 = imageio.imread(flist[0], as_gray=True)
 
-# %% evaluate the first frame's POI
+    # %% evaluate the first frame's POI
     X = im1.shape[1] // 16
     Y = im1.shape[0] // 16
     poi = getPOI(X, Y, kernel)
-# % get the weights
+    # % get the weights
     W = gaussianWeight(kernel)
-# %% loop over all images in directory
+    # %% loop over all images in directory
     for i in range(1, len(flist)):
         im2 = imageio.imread(flist[i], as_gray=True)
 
