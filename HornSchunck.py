@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """
-python HornSchunck.py data/box box
-python HornSchunck.py data/office office
-python HornSchunck.py data/rubic rubic
-python HornSchunck.py data/sphere sphere
+python HornSchunck.py data/box box.*
+python HornSchunck.py data/office office.*
+python HornSchunck.py data/rubic rubic.*
+python HornSchunck.py data/sphere sphere.*
 """
 # from scipy.ndimage.filters import gaussian_filter
 import imageio
@@ -28,7 +28,7 @@ def main():
     p.add_argument('-N', help='number of iterations', type=int, default=8)
     p = p.parse_args()
 
-    U, V = horn_schunck(p.stem, p.pat, alpha=p.alpha, Niter=p.N, verbose=p.verbose)
+    U, V = horn_schunck(p.stem, p.pat, alpha=p.alpha, Niter=p.N, verbose=p.plot)
 
     show()
 

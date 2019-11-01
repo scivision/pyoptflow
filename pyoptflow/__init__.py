@@ -1,10 +1,7 @@
 from pathlib import Path
 
-#
-from .hornschunck import HornSchunck  # noqa: F401
-from .lucaskanade import LucasKanade, getPOI, gaussianWeight  # noqa: F401
-
-# %%
+from .hornschunck import HornSchunck
+from .lucaskanade import LucasKanade, getPOI, gaussianWeight
 
 
 def getimgfiles(stem: Path, pat: str) -> list:

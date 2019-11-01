@@ -16,7 +16,7 @@ IM1[7, 7] = 0
 
 
 def test_hornschunck():
-    U, V = pof.HornSchunck(IM1, IM2, 1.0, 100)
+    U, V = pof.HornSchunck(IM1, IM2, alpha=1.0, Niter=100)
 
     assert U[7, 7] == approx(-0.0594501756)
 
