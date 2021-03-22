@@ -19,7 +19,7 @@ jobs:
         python-version: '3.7'
     - run: pip install .[tests,lint]
     - run: flake8
-    - run: mypy .
+    - run: mypy
     - run: pytest
       working-directory: tests
 
