@@ -1,6 +1,7 @@
 from __future__ import annotations
-from scipy.ndimage.filters import convolve as filter2
+
 import numpy as np
+from scipy.signal import convolve2d
 
 HSKERN = np.array(
     [[1 / 12, 1 / 6, 1 / 12], [1 / 6, 0, 1 / 6], [1 / 12, 1 / 6, 1 / 12]], float
@@ -39,8 +40,8 @@ def HornSchunck(
     im2 = im2.astype(np.float32)
 
     # set up initial velocities
-    uInitial = np.zeros([im1.shape[0], im1.shape[1]])
-    vInitial = np.zeros([im1.shape[0], im1.shape[1]])
+    uInitial = np.zeros([im1.shape[0], im1.shape[1]], dtype=np.float32)
+    vInitial = np.zeros([im1.shape[0], im1.shape[1]], dtype=np.float32)
 
     # Set initial value for the flow vectors
     U = uInitial
@@ -54,13 +55,11 @@ def HornSchunck(
 
         plotderiv(fx, fy, ft)
 
-    #    print(fx[100,100],fy[100,100],ft[100,100])
-
     # Iteration to reduce error
     for _ in range(Niter):
         # %% Compute local averages of the flow vectors
-        uAvg = filter2(U, HSKERN)
-        vAvg = filter2(V, HSKERN)
+        uAvg = convolve2d(U, HSKERN, "same")
+        vAvg = convolve2d(V, HSKERN, "same")
         # %% common part of update step
         der = (fx * uAvg + fy * vAvg + ft) / (alpha ** 2 + fx ** 2 + fy ** 2)
         # %% iterative step
@@ -74,10 +73,10 @@ def computeDerivatives(
     im1: np.ndarray, im2: np.ndarray
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
 
-    fx = filter2(im1, kernelX) + filter2(im2, kernelX)
-    fy = filter2(im1, kernelY) + filter2(im2, kernelY)
+    fx = convolve2d(im1, kernelX, "same") + convolve2d(im2, kernelX, "same")
+    fy = convolve2d(im1, kernelY, "same") + convolve2d(im2, kernelY, "same")
 
     # ft = im2 - im1
-    ft = filter2(im1, kernelT) + filter2(im2, -kernelT)
+    ft = convolve2d(im1, kernelT, "same") + convolve2d(im2, -kernelT, "same")
 
     return fx, fy, ft
