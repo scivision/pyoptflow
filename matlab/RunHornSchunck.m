@@ -1,5 +1,6 @@
 
-name = 'box';
+name = 'sphere';
+Niter = 100;
 
 datadir = fullfile("../src/pyoptflow/tests/data/",name);
 
@@ -19,22 +20,28 @@ elseif islogical(im1)
 end
 
 fg = figure(1);
+clf(fg)
 %t = tiledlayout(fg, 1, 3);
 subplot(1,3,1)
-[Umat, Vmat] = HornSchunck(im1, im2);
+axis("image")
+[Umat, Vmat] = HornSchunck(im1, im2, 1, Niter);
 plotFlow(Umat, Vmat)
 title("Matlab plain")
 %% compare to Matlab CV Toolbox
-if ~isempty(ver('vision'))
-%nexttile(t)
 subplot(1,3,2)
-opticFlow = opticalFlowHS('MaxIteration', 100);
-estimateFlow(opticFlow, im1);
-flow = estimateFlow(opticFlow, im2);
-
-%plot(flow,'DecimationFactor',[5 5],'ScaleFactor',25)
-plotFlow(flow.Vx, flow.Vy)
 title("Matlab Computer Vision toolbox")
+
+if ~isempty(ver('vision'))
+  %nexttile(t)
+
+  axis("image")
+  opticFlow = opticalFlowHS('Smoothness', 0.001, 'MaxIteration', Niter);
+  estimateFlow(opticFlow, im1);
+  flow = estimateFlow(opticFlow, im2);
+
+  %plot(flow,'DecimationFactor',[5 5],'ScaleFactor',25)
+  plotFlow(flow.Vx, flow.Vy)
+
 end
 %% compare to pure Python
 if ispc
@@ -47,11 +54,13 @@ if ispc
   end
 end
 
-UV = py.pyoptflow.HornSchunck(py.numpy.asarray(im1), py.numpy.asarray(im2));
-U = single(UV{1});
-V = single(UV{2});
+UV = py.pyoptflow.HornSchunck(py.numpy.asarray(im1), py.numpy.asarray(im2), ...
+  pyargs("Niter", uint16(Niter), 'alpha', 1));
+U = double(UV{1});
+V = double(UV{2});
 
 %nexttile(t)
 subplot(1,3,3)
+axis("image")
 plotFlow(U,V)
 title("PyOptFlow")
