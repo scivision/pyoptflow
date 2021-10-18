@@ -18,14 +18,14 @@ FILTER = 7
 
 
 def main():
-    p = ArgumentParser(description='Pure Python Horn Schunck Optical Flow')
-    p.add_argument('stem', help='path/stem of files to analyze')
-    p.add_argument('pat', help='glob pattern of files', default='*.bmp')
-    p.add_argument('-p', '--plot', help='show plots', action='store_true')
+    p = ArgumentParser(description="Pure Python Horn Schunck Optical Flow")
+    p.add_argument("stem", help="path/stem of files to analyze")
+    p.add_argument("pat", help="glob pattern of files", default="*.bmp")
+    p.add_argument("-p", "--plot", help="show plots", action="store_true")
     p.add_argument(
-        '-a', '--alpha', help='regularization parameter', type=float, default=0.001
+        "-a", "--alpha", help="regularization parameter", type=float, default=0.001
     )
-    p.add_argument('-N', help='number of iterations', type=int, default=8)
+    p.add_argument("-N", help="number of iterations", type=int, default=8)
     p = p.parse_args()
 
     U, V = horn_schunck(p.stem, p.pat, alpha=p.alpha, Niter=p.N, verbose=p.plot)
@@ -52,5 +52,5 @@ def horn_schunck(stem: Path, pat: str, alpha: float, Niter: int, verbose: bool):
     return U, V
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

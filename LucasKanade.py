@@ -11,9 +11,9 @@ from pyoptflow.plots import compareGraphsLK
 
 
 def main():
-    p = ArgumentParser(description='Pure Python Lucas Kanade Optical Flow')
-    p.add_argument('stem', help='path/stem of files to analyze')
-    p.add_argument('pat', help='pattern glob')
+    p = ArgumentParser(description="Pure Python Lucas Kanade Optical Flow")
+    p.add_argument("stem", help="path/stem of files to analyze")
+    p.add_argument("pat", help="pattern glob")
     p = p.parse_args()
 
     lucas_kanade(p.stem, p.pat)
@@ -44,5 +44,5 @@ def lucas_kanade(stem, pat: str, kernel: int = 5, Nfilter: int = 7):
         im1 = im2.copy()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

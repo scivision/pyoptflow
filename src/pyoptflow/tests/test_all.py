@@ -1,6 +1,4 @@
-#!/usr/bin/env python
 from pathlib import Path
-import pytest
 import numpy as np
 from pytest import approx
 import pyoptflow as pof
@@ -22,9 +20,5 @@ def test_hornschunck():
 
 
 def test_io():
-    flist = pof.getimgfiles(RDIR / 'data/box', 'box*')
+    flist = pof.getimgfiles(RDIR / "data/box", "box*")
     print(flist)
-
-
-if __name__ == '__main__':
-    pytest.main([__file__])
