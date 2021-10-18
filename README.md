@@ -1,11 +1,9 @@
+# Optical Flow: Horn-Schunck
+
 [![image](https://zenodo.org/badge/DOI/10.5281/zenodo.1043971.svg)](https://doi.org/10.5281/zenodo.1043971)
-[![Actions Status](https://github.com/scivision/pyoptflow/workflows/ci_python/badge.svg)](https://github.com/scivision/pyoptflow/actions)
-
-
+[![Actions Status](https://github.com/scivision/pyoptflow/workflows/ci/badge.svg)](https://github.com/scivision/pyoptflow/actions)
 [![Python versions (PyPI)](https://img.shields.io/pypi/pyversions/pyoptflow.svg)](https://pypi.python.org/pypi/pyoptflow)
 [![PyPi Download stats](http://pepy.tech/badge/pyoptflow)](http://pepy.tech/project/pyoptflow)
-
-# Optical Flow: Horn-Schunck
 
 Python implementation of optical flow estimation using only the Scipy stack for:
 
@@ -33,32 +31,37 @@ The program scripts expect `directory` `glob pattern`
 
 [imageio](https://imageio.github.io/) loads a wide varity of images *and* video.
 
-### Box
+**Box:**
 
-    python HornSchunck.py data/box box*.bmp
+```sh
+python HornSchunck.py data/box box*.bmp
+```
 
-### Office
+**Office**: all time steps:
 
-all time steps:
-
-    python HornSchunck.py data/office office*.bmp
+```sh
+python HornSchunck.py data/office office*.bmp
+```
 
 or just the first 2 time steps:
 
-    python HornSchunck.py data/office office.[0-2].bmp
+```sh
+python HornSchunck.py data/office office.[0-2].bmp
+```
 
-### Rubic
+**Rubic**:
 
-    python HornSchunck.py data/rubic rubic*.bmp
+```sh
+python HornSchunck.py data/rubic rubic*.bmp
+```
 
-### Sphere
+**Sphere**
 
-    python HornSchunck.py data/sphere sphere*.bmp
+```sh
+python HornSchunck.py data/sphere sphere*.bmp
+```
 
-## Compare: Matlab Computer Vision toolbox
+Compare: Matlab Computer Vision toolbox: in [matlab](./matlab),
+similar method in Octave and a comparison plot using Matlab Computer Vision toolbox.
 
-In `Matlab` directory, similar method in Octave and a comparison plot using Matlab Computer Vision toolbox.
-
-## Reference
-
-[Inspiration](https://github.com/ablarry91/Optical-Flow-LucasKanade-HornSchunck/)
+Reference:[Inspiration](https://github.com/ablarry91/Optical-Flow-LucasKanade-HornSchunck/)

@@ -1,4 +1,4 @@
-name: ci_python
+name: ci
 
 on:
   push:
@@ -12,11 +12,17 @@ jobs:
 
   linux:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.7', '3.10' ]
+    name: Lint Python ${{ matrix.python-version }}
+
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
       with:
-        python-version: '3.7'
+        python-version: ${{ matrix.python-version }}
+
     - run: pip install .[tests,lint]
     - run: flake8
     - run: mypy
@@ -29,10 +35,10 @@ jobs:
       matrix:
         os: [windows-latest, macos-latest]
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
       with:
-        python-version: '3.7'
+        python-version: '3.x'
     - run: pip install .[tests]
     - run: pytest
       working-directory: tests
