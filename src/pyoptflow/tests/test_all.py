@@ -16,9 +16,9 @@ IM1[7, 7] = 0
 def test_hornschunck():
     U, V = pof.HornSchunck(IM1, IM2, alpha=1.0, Niter=100)
 
-    assert U[7, 7] == approx(-0.0594501756)
+    assert U[7, 7] == approx(0.05951344974325876)
 
 
 def test_io():
     flist = pof.getimgfiles(RDIR / "data/box", "box*")
-    print(flist)
+    assert len(flist) == 2
