@@ -20,17 +20,17 @@ function plotFlow(u, v, imgOriginal, rSize, scale)
 % October 2008
 % Rev: Jan 2009
 
-figure();
+arguments
+  u (:,:) {mustBeNumeric}
+  v (:,:) {mustBeNumeric}
+  imgOriginal (:,:) {mustBeNumeric} = []
+  rSize (1,1) {mustBeInteger,mustBePositive} = 5
+  scale (1,1) {mustBeInteger,mustBePositive} = 3
+end
 
-if nargin>2
+if ~isempty(imgOriginal)
     imshow(imgOriginal);
     hold on;
-end
-if nargin<4
-    rSize=5;
-end
-if nargin<5
-    scale=3;
 end
 
 % Enhance the quiver plot visually by showing one vector per region

@@ -11,8 +11,9 @@ function [fx, fy, ft] = computeDerivatives(im1, im2)
 % fy = conv2(im1,[1; -1]);
 % ft= im2-im1;
 
-if size(im2,1)==0
-    im2=zeros(size(im1));
+arguments
+  im1 (:,:) {mustBeNumeric}
+  im2 (:,:) {mustBeNumeric}
 end
 
 Xkern = 0.25* [-1 1; 

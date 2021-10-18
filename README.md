@@ -2,7 +2,6 @@
 
 [![image](https://zenodo.org/badge/DOI/10.5281/zenodo.1043971.svg)](https://doi.org/10.5281/zenodo.1043971)
 [![Actions Status](https://github.com/scivision/pyoptflow/workflows/ci/badge.svg)](https://github.com/scivision/pyoptflow/actions)
-[![Python versions (PyPI)](https://img.shields.io/pypi/pyversions/pyoptflow.svg)](https://pypi.python.org/pypi/pyoptflow)
 [![PyPi Download stats](http://pepy.tech/badge/pyoptflow)](http://pepy.tech/project/pyoptflow)
 
 Python implementation of optical flow estimation using only the Scipy stack for:
@@ -34,31 +33,31 @@ The program scripts expect `directory` `glob pattern`
 **Box:**
 
 ```sh
-python HornSchunck.py data/box box*.bmp
+python HornSchunck.py src/pyoptflow/data/tests/box box*.bmp
 ```
 
 **Office**: all time steps:
 
 ```sh
-python HornSchunck.py data/office office*.bmp
+python HornSchunck.py src/pyoptflow/data/tests/office office*.bmp
 ```
 
 or just the first 2 time steps:
 
 ```sh
-python HornSchunck.py data/office office.[0-2].bmp
+python HornSchunck.py src/pyoptflow/data/tests/office office.[0-2].bmp
 ```
 
 **Rubic**:
 
 ```sh
-python HornSchunck.py data/rubic rubic*.bmp
+python HornSchunck.py src/pyoptflow/data/tests/rubic rubic*.bmp
 ```
 
 **Sphere**
 
 ```sh
-python HornSchunck.py data/sphere sphere*.bmp
+python HornSchunck.py src/pyoptflow/data/tests/sphere sphere*.bmp
 ```
 
 Compare: Matlab Computer Vision toolbox: in [matlab](./matlab),
