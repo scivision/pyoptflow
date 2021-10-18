@@ -3,7 +3,7 @@ import numpy as np
 from pytest import approx
 import pyoptflow as pof
 
-RDIR = Path(__file__).parents[1]
+RDIR = Path(__file__).parent
 
 FILTER = 7
 
