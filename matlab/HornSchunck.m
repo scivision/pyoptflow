@@ -32,7 +32,7 @@ arguments
   ite (1,1) {mustBePositive,mustBeInteger} = 100
   uInitial (:,:) {mustBeNumeric} = zeros(size(im1(:,:,1)))
   vInitial (:,:) {mustBeNumeric} = zeros(size(im2(:,:,1)))
-  displayFlow (1,1) = true
+  displayFlow (1,1) = false
 end
 
 im1=smoothImg(im1,1);
