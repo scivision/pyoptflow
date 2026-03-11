@@ -5,6 +5,7 @@ python HornSchunck.py data/office office.*
 python HornSchunck.py data/rubic rubic.*
 python HornSchunck.py data/sphere sphere.*
 """
+
 # from scipy.ndimage.filters import gaussian_filter
 import imageio
 from pathlib import Path

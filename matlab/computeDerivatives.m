@@ -16,12 +16,12 @@ arguments
   im2 (:,:) {mustBeNumeric}
 end
 
-Xkern = 0.25* [-1 1; 
+Xkern = 0.25* [-1 1;
                -1 1];
-               
-Ykern = 0.25*[-1 -1; 
+
+Ykern = 0.25*[-1 -1;
                1 1];
-               
+
 Tkern = 0.25*ones(2);
 
 % Horn-Schunck original method

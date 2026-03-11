@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import numpy as np
 from scipy.signal import convolve2d
 
@@ -20,7 +18,7 @@ def HornSchunck(
     *,
     alpha: float = 0.001,
     Niter: int = 8,
-    verbose: bool = False
+    verbose: bool = False,
 ) -> tuple[np.ndarray, np.ndarray]:
     """
 
@@ -61,7 +59,7 @@ def HornSchunck(
         uAvg = convolve2d(U, HSKERN, "same")
         vAvg = convolve2d(V, HSKERN, "same")
         # %% common part of update step
-        der = (fx * uAvg + fy * vAvg + ft) / (alpha ** 2 + fx ** 2 + fy ** 2)
+        der = (fx * uAvg + fy * vAvg + ft) / (alpha**2 + fx**2 + fy**2)
         # %% iterative step
         U = uAvg - fx * der
         V = vAvg - fy * der

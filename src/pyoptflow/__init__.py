@@ -3,6 +3,10 @@ from pathlib import Path
 from .hornschunck import HornSchunck
 from .lucaskanade import LucasKanade, getPOI, gaussianWeight
 
+__all__ = ["HornSchunck", "LucasKanade", "getPOI", "gaussianWeight", "getimgfiles"]
+
+__version__ = "1.5.0"
+
 
 def getimgfiles(stem: Path, pat: str) -> list:
 

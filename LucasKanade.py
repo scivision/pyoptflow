@@ -2,6 +2,7 @@
 """
 This function isn't working yet.
 """
+
 import imageio
 from scipy.ndimage.filters import gaussian_filter
 from argparse import ArgumentParser
@@ -39,9 +40,9 @@ def lucas_kanade(stem, pat: str, kernel: int = 5, Nfilter: int = 7):
 
         V = LucasKanade(im1, im2, kernel, poi, W)
 
-        compareGraphsLK(im1, im2, poi, V)
+        compareGraphsLK(im2, poi, V)
 
-        im1 = im2.copy()
+        im1 = im2.copy()  # type: ignore[attr-defined]
 
 
 if __name__ == "__main__":

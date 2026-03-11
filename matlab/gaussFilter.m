@@ -1,6 +1,6 @@
 function G=gaussFilter(segma,kSize)
 % Creates a 1-D Gaussian kernel of a standard deviation 'segma' and a size
-% of 'kSize'. 
+% of 'kSize'.
 %
 % In theory, the Gaussian distribution is non-zero everywhere. In practice,
 % it's effectively zero at places further away from about three standard

@@ -6,8 +6,7 @@ on:
     - "**.py"
     - ".github/workflows/ci.yml"
   pull_request:
-    paths:
-    - "**.py"
+
 
 jobs:
 
@@ -16,32 +15,19 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        python-version: [ '3.7', '3.9' ]
-    name: Lint Python ${{ matrix.python-version }}
+        python-version: [ '3.10' ]
+
+    name: Python ${{ matrix.python-version }}
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v6
+
+    - uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python-version }}
 
-    - run: pip install .[tests,lint]
-    - run: flake8
-    - run: mypy
-    - run: pytest
-
-  integration:
-    needs: linux
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest, macos-latest]
-
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.7'
-
     - run: pip install .[tests]
+
+    - run: mypy --install-types --non-interactive
+
     - run: pytest

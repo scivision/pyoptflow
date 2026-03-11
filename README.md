@@ -2,7 +2,7 @@
 
 [![image](https://zenodo.org/badge/DOI/10.5281/zenodo.1043971.svg)](https://doi.org/10.5281/zenodo.1043971)
 [![Actions Status](https://github.com/scivision/pyoptflow/workflows/ci/badge.svg)](https://github.com/scivision/pyoptflow/actions)
-[![PyPi Download stats](http://pepy.tech/badge/pyoptflow)](http://pepy.tech/project/pyoptflow)
+[![PyPI Download stats](http://pepy.tech/badge/pyoptflow)](http://pepy.tech/project/pyoptflow)
 
 Python implementation of optical flow estimation using only the Scipy stack for:
 

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyoptflow"
+description = "Pure Python optical flow: Horn-Schunck"
+requires-python = ">=3.10"
+keywords = ["optical flow", "Horn-Schunck", "Lucas-Kanade"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = ["imageio", "scipy", "numpy"]
+dynamic = ["readme", "version"]
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+version = {attr = "pyoptflow.__version__"}
+
+[project.optional-dependencies]
+tests = ["pytest", "mypy"]
+plot = ["matplotlib"]
+
+[tool.mypy]
+files = ["."]
+install_types = true
+exclude = ["^build([/\\\\]|$)"]
+ignore_missing_imports = true
